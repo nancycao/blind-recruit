@@ -1,4 +1,5 @@
 import requests
+import json
 
 def ocr_space_file(filename, overlay=False, api_key='186247b66c88957', language='eng'):
     """ OCR.space API request with local file.
@@ -52,6 +53,6 @@ def ocr_space_url(url, overlay=False, api_key='186247b66c88957', language='eng')
 
 # Use examples:
 test_file = ocr_space_file(filename='resume.jpg')
-test_url = ocr_space_url(url='https://resumegenius.com/wp-content/uploads/2014/09/Resume-Template-Professional-Gray.jpg')
-
-print(test_file)
+#test_url = ocr_space_url(url='https://resumegenius.com/wp-content/uploads/2014/09/Resume-Template-Professional-Gray.jpg')
+d = json.loads(test_file)
+print(d['ParsedResults'][0]['ParsedText'])
