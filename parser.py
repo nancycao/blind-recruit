@@ -52,7 +52,11 @@ def ocr_space_url(url, overlay=False, api_key='186247b66c88957', language='eng')
     return r.content.decode()
 
 # Use examples:
-#test_file = ocr_space_file(filename='resume.jpg')
+test_file = ocr_space_file(filename='rec.png')
 test_url = ocr_space_url(url='http://www.pages.drexel.edu/~et95/final/images/Resume2013To.jpg')
-d = json.loads(test_url)
-print(d['ParsedResults'][0]['ParsedText'])
+
+rec_json = json.loads(test_file)
+resume_json = json.loads(test_url)
+
+print(rec_json['ParsedResults'][0]['ParsedText'])
+print(resume_json['ParsedResults'][0]['ParsedText'])
