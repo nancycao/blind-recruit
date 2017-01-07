@@ -132,4 +132,36 @@ def findEmail(splitline):
         return realRet
 
 # print(findEmail(resumej))
+# print(findEmail(recj))
 # ---------- END (FIND APPLICANT EMAIL) ----------
+
+
+# ---------- FIND APPLICANT PHONE NUMBER ----------
+regex = re.compile("\(?\b[2-9][0-9]{2}\)?[-. ]?[2-9][0-9]{2}[-. ]?[0-9]{4}\b")
+
+def findPhone(splitline):
+    ret = []
+    realRet = []
+    for str in splitline:
+        match = re.findall(r"\(?\b[2-9][0-9]{2}\)?[-. ]?[2-9][0-9]{2}[-. ]?[0-9]{4}\b", str)
+        ret.append(match)
+    for item in ret:
+        if item != []:
+            realRet.append(item[0])
+    if len(realRet) == 1:
+        return realRet[0]
+    else:
+        return realRet
+
+print(findPhone(recj))
+print(findPhone(resumej))
+# ---------- END (APPLICANT PHONE NUMBER) ----------
+
+# ---------- FINAL THINGS -----------
+# print("REC")
+# print("Name: " + oneName(listNames(recj)))
+# print("Email: " + findEmail(resumej))
+#
+# print("RESUME")
+# print("Name: " + oneName(listNames(resumej)))
+# print("Email: " + findEmail(resumej))
