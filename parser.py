@@ -129,8 +129,6 @@ def findEmail(splitline):
     else:
         return realRet
 
-# print(findEmail(resumej))
-# print(findEmail(recj))
 # ---------- END (FIND APPLICANT EMAIL) ----------
 
 
@@ -204,6 +202,7 @@ genderID = {"they":["he","she"],
             "layperson":["layman"],
             "staffed":["manned"]
             }
+
 # ---------- END (IDENTIFY GENDER WORDS) ---------
 
 # ---------- FINAL THINGS -----------
