@@ -6,6 +6,8 @@ import operator
 from nltk.tag.stanford import StanfordNERTagger
 #--- FIND EMAIL --
 import re
+#--- TO TXT FILE --
+import sys
 
 
 # ---------- FROM PDF TO TEXT ----------
@@ -66,8 +68,6 @@ test_url = ocr_space_url(url='http://www.pages.drexel.edu/~et95/final/images/Res
 rec_json = json.loads(test_file)
 resume_json = json.loads(test_url)
 
-# print(rec_json['ParsedResults'][0]['ParsedText'])
-# print(resume_json['ParsedResults'][0]['ParsedText'])
 # ---------- END (PDF TO TEXT) ----------
 
 # ----- splitlines the data -----
@@ -107,8 +107,6 @@ def oneName(list):
     combinedNames = [i+' '+j for i,j in zip(list[::2],list[1::2])]
     return most_common(combinedNames)
 
-# manyNames = listNames(resumej)
-# print(oneName(manyNames))
 # ---------- END (FIND NAME OF APPLIANT) ----------
 
 
@@ -153,8 +151,6 @@ def findPhone(splitline):
     else:
         return realRet
 
-# print(findPhone(recj))
-# print(findPhone(resumej))
 # ---------- END (APPLICANT PHONE NUMBER) ----------
 
 
@@ -163,6 +159,8 @@ genderID = {"they":["he","she"],
             "them":["him","her"],
             "their":["his","hers"],
             "themself":["himself","herself"],
+            "person":["woman","man","boy","girl"],
+            "people":["women","men","boys","girls"],
             "business executive":["businessman","businesswoman", "business man", "business woman"],
             "cleaner":["cleaning lady"],
             "courier":["delivery boy", "delivery man", "delivery woman"],
@@ -209,10 +207,24 @@ genderID = {"they":["he","she"],
 # ---------- END (IDENTIFY GENDER WORDS) ---------
 
 # ---------- FINAL THINGS -----------
-# print("REC")
-# print("Name: " + oneName(listNames(recj)))
-# print("Email: " + findEmail(resumej))
-#
-# print("RESUME")
-# print("Name: " + oneName(listNames(resumej)))
-# print("Email: " + findEmail(resumej))
+# def doNA(string):
+#     if string is None:
+#         return "N/A"
+
+def writeToFile():
+    print("Writing to results.txt . . .")
+    rfile = open('results.txt','w')
+    rfile.write("REC\n")
+    rfile.write("Name: " + oneName(listNames(recj)) + "\n")
+    rfile.write("Email: " + str(findEmail(recj)) + "\n")
+    rfile.write("Phone: " + str(findPhone(recj)) + "\n")
+    rfile.write(" \n")
+    rfile.write("RESUME\n")
+    rfile.write("Name: " + oneName(listNames(resumej)) + "\n")
+    rfile.write("Email: " + str(findEmail(resumej)) + "\n")
+    rfile.write("Phone: " + str(findPhone(resumej)) + "\n")
+    rfile.close()
+    print("Done!")
+
+# ----------- RUN -----------
+writeToFile()
