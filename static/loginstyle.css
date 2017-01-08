@@ -1,0 +1,146 @@
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+  }
+  h1 {
+      color: #F8EEE7 !important;
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #49274A;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #49274A;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }  
+  blockquote{
+    font-size: 15px;
+  }
+  .jumbotron {
+      background-color: #94618E;
+      color: #fff;
+      font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+      padding: 20px 50px;
+  }
+
+  .col-centered{
+    float: none;
+    margin: 0 auto;
+  }
+
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .logo-small {
+      color: #49274A;
+      font-size: 50px;
+  }
+  .logo {
+      color: #49274A;
+      font-size: 200px;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #f4511e; 
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+
+  .blindfont{
+    font-size: 19px;
+    color: #49274A;
+  }
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+    
+
+  #first{
+    background-color: #F8EEE7 !important;
+  }
+
+  #mission{
+    font-size: 20px;
+  }
+
+  #second{
+    background-color: #F8EEE7 !important;
+
+  }
+  #third{
+    background-color: #F4DECB !important;
+  }
