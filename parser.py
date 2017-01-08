@@ -25,12 +25,15 @@ def ocr_space_url(url, overlay=False, api_key='186247b66c88957', language='eng')
 # ---------- END (PDF TO TEXT) ----------
 
 # ----- splitlines the data -----
-# rec_json = ocr_space_url("http://appealletter.org/wp-content/uploads/2016/09/job-recommendation-letters-68979058.png")
-# resume_json = ocr_space_url("http://www.pages.drexel.edu/~et95/final/images/Resume2013To.jpg")
-# recj = rec_json['ParsedResults'][0]['ParsedText']
-# recj = recj.splitlines()
-# resumej = resume_json['ParsedResults'][0]['ParsedText']
-# resumej = resumej.splitlines()
+rec_json = ocr_space_url("http://appealletter.org/wp-content/uploads/2016/09/job-recommendation-letters-68979058.png")
+resume_json = ocr_space_url("http://www.pages.drexel.edu/~et95/final/images/Resume2013To.jpg")
+recj = rec_json['ParsedResults'][0]['ParsedText']
+recj = recj.splitlines()
+resumej = resume_json['ParsedResults'][0]['ParsedText']
+resumej = resumej.splitlines()
+test_json = ocr_space_url("https://lauragoon.github.io/test.pdf")
+testj = test_json['ParsedResults'][0]['ParsedText']
+testj = testj.splitlines()
 # ----- end (splitlines the data) -----
 
 # ---------- FIND NAME OF APPLICANT ----------
@@ -59,16 +62,17 @@ def listNames(splitline):
                 names.append(tup[0])
     return names
 
-def nameToInitials(name):
-    name = name.split(" ");
-    ret = ""
-    for item in name:
-        ret += item[0]
-    return ret
+# def nameToInitials(name):
+#     name = name.split(" ");
+#     ret = ""
+#     for item in name:
+#         ret += item[0]
+#     return ret
 
 def oneName(list):
     combinedNames = [i+' '+j for i,j in zip(list[::2],list[1::2])]
-    return nameToInitials(most_common(combinedNames))
+    return most_common(combinedNames)
+
 
 # ---------- END (FIND NAME OF APPLIANT) ----------
 
@@ -116,19 +120,28 @@ def findPhone(splitline):
 
 
 # ---------- IDENTIFY GENDER WORDS ----------
-genderID = {"they":["he","she"],
-            "them":["him","her"],
-            "their":["his","hers"],
-            "themself":["himself","herself"],
-            "person":["woman","man","boy","girl"],
-            "people":["women","men","boys","girls"],
+genderID = {"they ":["he ","she "],
+            "They ":["He ","She "],
+            " them":[" him"," her"],
+            " Them":[" Him"," Her"],
+            "their ":["his ","hers "],
+            "Their ":["His ","Hers "],
+            " themself":[" himself"," herself"],
+            " Themself":[" Himself"," Herself"],
+            "person ":["woman ","man ","boy ","girl "],
+            "Person ":["Woman ","Man ","Boy ","Girl "],
+            " people":[" women"," men"," boys"," girls"],
+            " People":[" Women"," Men"," Boys"," Girls"],
             "business executive":["businessman","businesswoman", "business man", "business woman"],
+            "Business executive":["Businessman","Businesswoman", "Business man", "Business woman"],
             # "cleaner":["cleaning lady"],
             "courier":["delivery boy", "delivery man", "delivery woman"],
+            "Courier":["Delivery boy", "Delivery man", "Delivery woman"],
             # "supervisor":["foreman"],
             # "insurance agent":["insurance man"],
             # "proprietor":["landlady","landlord"],
             "mail carrier":["mailman"],
+            "Mail Carrier":["Mailman"],
             # "journalist":["newsman"],
             "police officer":["policeman"],
             "technician":["repairman"],
@@ -164,12 +177,17 @@ genderID = {"they":["he","she"],
             "principal":["headmaster","headmistress"],
             # "layperson":["layman"],
             "staffed":["manned"],
+            "Staffed":["Manned"],
             "IT WORDS":["Richard"]
             }
 
 def replaceWords(splitline):
     ret = ""
+    listofnames = listNames(splitline)
     for string in splitline:
+        for name in listofnames:
+            if name in string:
+                string = string.replace(name,name[0])
         for k, dk in genderID.items():
             for x in dk:
                 if x in string:
@@ -178,7 +196,8 @@ def replaceWords(splitline):
         ret += "\n"
     return ret
 
-# print(replaceWords(recj))
+# print(listNames(resumej))
+# print(replaceWords(testj))
 
 # replaceWords(recj)
 
