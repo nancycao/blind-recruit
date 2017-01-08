@@ -25,10 +25,12 @@ def ocr_space_url(url, overlay=False, api_key='186247b66c88957', language='eng')
 # ---------- END (PDF TO TEXT) ----------
 
 # ----- splitlines the data -----
-#recj = rec_json['ParsedResults'][0]['ParsedText']
-#recj = recj.splitlines()
-#resumej = resume_json['ParsedResults'][0]['ParsedText']
-#resumej = resumej.splitlines()
+rec_json = ocr_space_url("http://appealletter.org/wp-content/uploads/2016/09/job-recommendation-letters-68979058.png")
+resume_json = ocr_space_url("http://www.pages.drexel.edu/~et95/final/images/Resume2013To.jpg")
+recj = rec_json['ParsedResults'][0]['ParsedText']
+recj = recj.splitlines()
+resumej = resume_json['ParsedResults'][0]['ParsedText']
+resumej = resumej.splitlines()
 # ----- end (splitlines the data) -----
 
 # ---------- FIND NAME OF APPLICANT ----------
