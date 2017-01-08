@@ -153,9 +153,60 @@ def findPhone(splitline):
     else:
         return realRet
 
-print(findPhone(recj))
-print(findPhone(resumej))
+# print(findPhone(recj))
+# print(findPhone(resumej))
 # ---------- END (APPLICANT PHONE NUMBER) ----------
+
+
+# ---------- IDENTIFY GENDER WORDS ----------
+genderID = {"they":["he","she"],
+            "them":["him","her"],
+            "their":["his","hers"],
+            "themself":["himself","herself"],
+            "business executive":["businessman","businesswoman", "business man", "business woman"],
+            "cleaner":["cleaning lady"],
+            "courier":["delivery boy", "delivery man", "delivery woman"],
+            "supervisor":["foreman"],
+            "insurance agent":["insurance man"],
+            "proprietor":["landlady","landlord"],
+            "mail carrier":["mailman"],
+            "journalist":["newsman"],
+            "police officer":["policeman"],
+            "technician":["repairman"],
+            "sales agent":["saleslady","salesman"],
+            "service representative":["serviceman"],
+            "flight attendant":["steward","stewardess"],
+            "server":["waiter","waitress"],
+            "worker":["workman"],
+            "chairperson":["chairman","chairwoman"],
+            "committee member":["committee man","committee woman"],
+            "first-year student":["freshman"],
+            "figurehead":["front man"],
+            "host":["hostess"],
+            "homemaker":["housewife","househusband"],
+            "go-between":["middleman"],
+            "troubleshooter":["ombudsman"],
+            "entrepreneur":["self-made man"],
+            "spokesperson":["spokesman"],
+            "wage earner":["working man","working woman"],
+            "gigantic":["king-size"],
+            "courteous":["ladylike"],
+            "birth name":["maiden name"],
+            "human resources":["manpower"],
+            "host":["master of ceremonies"],
+            "synthetic":["man made","man-made"],
+            "dynamo":["man of action"],
+            "staff horus":["man-hour"],
+            "nurturing":["motherly"],
+            "upstaging":["one-up-manship"],
+            "diplomat":["statesman"],
+            "expertise":["workmanship"],
+            "best person for the job":["best man for the job","best woman for the job"],
+            "principal":["headmaster","headmistress"],
+            "layperson":["layman"],
+            "staffed":["manned"]
+            }
+# ---------- END (IDENTIFY GENDER WORDS) ---------
 
 # ---------- FINAL THINGS -----------
 # print("REC")
