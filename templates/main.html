@@ -27,14 +27,26 @@
 
 <br>
 
-    <form action="/test/">
-      <input type="submit" class="btn btn-default" value="Upload File Here"/>
-    </form>
+<form action="/results/" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Link To Resume/Recommendation</label> <br>
+    <input type="text" class="form-control" placeholder="Enter link" name="link">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form action="/search/" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Search for Applicant</label> <br>
+    <input type="text" placeholder="Enter Initials" name="initials">
+    <input type="text" placeholder="Enter ID" name="ID"> <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+</form>
 
 <br>
 <br>
 
-                          <p>Search for Your Applicant</p>
 
 </div>
 

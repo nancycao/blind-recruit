@@ -18,7 +18,7 @@
       color: #49274A;
       font-weight: 400;
       margin-bottom: 30px;
-  }  
+  }
   blockquote{
     font-size: 15px;
   }
@@ -58,7 +58,7 @@
       font-style: normal;
   }
   .panel {
-      border: 1px solid #f4511e; 
+      border: 1px solid #f4511e;
       border-radius:0 !important;
       transition: box-shadow 0.5s;
   }
@@ -127,7 +127,7 @@
     display: block;
 }
 
-    
+
 
   #first{
     background-color: #F8EEE7 !important;
