@@ -11,11 +11,11 @@ def createDB():
     db.commit()
     db.close()
 
-def insertEntry(initials, name, phone, email):
+def insertEntry(initials, name, ID, phone, email):
     f="hires.db"
     db = sqlite3.connect(f) #open if f exists, otherwise create
     c = db.cursor()    #facilitate db ops
-    q = "INSERT INTO people VALUES ('%s', '%s', '%s', '%s', '%s');"%(initials, name, genID(), phone, email)
+    q = "INSERT INTO people VALUES ('%s', '%s', '%s', '%s', '%s');"%(initials, name, ID, phone, email)
     c.execute(q)
     db.commit()
     db.close()
