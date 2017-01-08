@@ -14,19 +14,20 @@ def results():
     link = request.form['link']
     json = parser.ocr_space_url(link)
     parsedText = json['ParsedResults'][0]['ParsedText']
-    newText=""
-    initials = "initials"
-    name = ""
-    phone = ""
-    email = ""
+    splitline = parsedText.splitlines()
+    newText= parser.replaceWords(splitline)
+    name = parser.oneName(parser.listNames(splitline))
+    initials = parser.nameToInitials(name)
+    phone = parser.findPhone(splitline)
+    email = parser.findEmail(splitline)
     ID = database.genID()
-    #database.insertEntry(initials, name, ID, phone, email)
-    return render_template("results.html", initials=initials, id=ID, newText=parsedText)
+    database.insertEntry(initials, name, ID, phone, email)
+    return render_template("results.html", initials=initials, id=ID, newText=newText)
 
 @app.route("/search/", methods = ['POST','GET'])
 def search():
     initials = request.form['initials']
-    ID = request.form['id']
+    ID = request.form['ID']
     entry = database.getEntry(initials, ID)
     return render_template("search.html", entry=entry)
 

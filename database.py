@@ -29,8 +29,8 @@ def getEntry(initials, ID):
     c = db.cursor()    #facilitate db ops
     q = "SELECT * FROM people where initials='%s' and ID='%s'"%(initials, ID)
     c.execute(q)
-    return(c.fetchall()[0]) # returns ('NC', 'nancy', '59WK3C', '9171231234', 'ncao@stuy.edu')
+    return(c.fetchall()) # returns ('NC', 'nancy', '59WK3C', '9171231234', 'ncao@stuy.edu')
 
 #createDB()
 #insertEntry("NC", "nancy", "9171231234", "ncao@stuy.edu")
-getEntry("NC", "59WK3C")
+print(getEntry("JS", "0H72RF"))

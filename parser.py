@@ -62,12 +62,12 @@ def listNames(splitline):
                 names.append(tup[0])
     return names
 
-# def nameToInitials(name):
-#     name = name.split(" ");
-#     ret = ""
-#     for item in name:
-#         ret += item[0]
-#     return ret
+def nameToInitials(name):
+     name = name.split(" ");
+     ret = ""
+     for item in name:
+         ret += item[0]
+     return ret
 
 def oneName(list):
     combinedNames = [i+' '+j for i,j in zip(list[::2],list[1::2])]
