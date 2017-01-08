@@ -25,12 +25,12 @@ def ocr_space_url(url, overlay=False, api_key='186247b66c88957', language='eng')
 # ---------- END (PDF TO TEXT) ----------
 
 # ----- splitlines the data -----
-rec_json = ocr_space_url("http://appealletter.org/wp-content/uploads/2016/09/job-recommendation-letters-68979058.png")
-resume_json = ocr_space_url("http://www.pages.drexel.edu/~et95/final/images/Resume2013To.jpg")
-recj = rec_json['ParsedResults'][0]['ParsedText']
-recj = recj.splitlines()
-resumej = resume_json['ParsedResults'][0]['ParsedText']
-resumej = resumej.splitlines()
+# rec_json = ocr_space_url("http://appealletter.org/wp-content/uploads/2016/09/job-recommendation-letters-68979058.png")
+# resume_json = ocr_space_url("http://www.pages.drexel.edu/~et95/final/images/Resume2013To.jpg")
+# recj = rec_json['ParsedResults'][0]['ParsedText']
+# recj = recj.splitlines()
+# resumej = resume_json['ParsedResults'][0]['ParsedText']
+# resumej = resumej.splitlines()
 # ----- end (splitlines the data) -----
 
 # ---------- FIND NAME OF APPLICANT ----------
@@ -59,9 +59,16 @@ def listNames(splitline):
                 names.append(tup[0])
     return names
 
+def nameToInitials(name):
+    name = name.split(" ");
+    ret = ""
+    for item in name:
+        ret += item[0]
+    return ret
+
 def oneName(list):
     combinedNames = [i+' '+j for i,j in zip(list[::2],list[1::2])]
-    return most_common(combinedNames)
+    return nameToInitials(most_common(combinedNames))
 
 # ---------- END (FIND NAME OF APPLIANT) ----------
 
@@ -116,48 +123,72 @@ genderID = {"they":["he","she"],
             "person":["woman","man","boy","girl"],
             "people":["women","men","boys","girls"],
             "business executive":["businessman","businesswoman", "business man", "business woman"],
-            "cleaner":["cleaning lady"],
+            # "cleaner":["cleaning lady"],
             "courier":["delivery boy", "delivery man", "delivery woman"],
-            "supervisor":["foreman"],
-            "insurance agent":["insurance man"],
-            "proprietor":["landlady","landlord"],
+            # "supervisor":["foreman"],
+            # "insurance agent":["insurance man"],
+            # "proprietor":["landlady","landlord"],
             "mail carrier":["mailman"],
-            "journalist":["newsman"],
+            # "journalist":["newsman"],
             "police officer":["policeman"],
             "technician":["repairman"],
             "sales agent":["saleslady","salesman"],
-            "service representative":["serviceman"],
-            "flight attendant":["steward","stewardess"],
+            # "service representative":["serviceman"],
+            # "flight attendant":["steward","stewardess"],
             "server":["waiter","waitress"],
-            "worker":["workman"],
+            # "worker":["workman"],
             "chairperson":["chairman","chairwoman"],
-            "committee member":["committee man","committee woman"],
-            "first-year student":["freshman"],
-            "figurehead":["front man"],
-            "host":["hostess"],
-            "homemaker":["housewife","househusband"],
-            "go-between":["middleman"],
-            "troubleshooter":["ombudsman"],
+            # "committee member":["committee man","committee woman"],
+            # "first-year student":["freshman"],
+            # "figurehead":["front man"],
+            # "host":["hostess"],
+            # "homemaker":["housewife","househusband"],
+            # "go-between":["middleman"],
+            # "troubleshooter":["ombudsman"],
             "entrepreneur":["self-made man"],
             "spokesperson":["spokesman"],
-            "wage earner":["working man","working woman"],
-            "gigantic":["king-size"],
-            "courteous":["ladylike"],
+            # "wage earner":["working man","working woman"],
+            # "gigantic":["king-size"],
+            # "courteous":["ladylike"],
             "birth name":["maiden name"],
             "human resources":["manpower"],
-            "host":["master of ceremonies"],
+            # "host":["master of ceremonies"],
             "synthetic":["man made","man-made"],
             "dynamo":["man of action"],
-            "staff horus":["man-hour"],
-            "nurturing":["motherly"],
-            "upstaging":["one-up-manship"],
+            # "staff horus":["man-hour"],
+            # "nurturing":["motherly"],
+            # "upstaging":["one-up-manship"],
             "diplomat":["statesman"],
             "expertise":["workmanship"],
             "best person for the job":["best man for the job","best woman for the job"],
             "principal":["headmaster","headmistress"],
-            "layperson":["layman"],
-            "staffed":["manned"]
+            # "layperson":["layman"],
+            "staffed":["manned"],
+            "IT WORDS":["Richard"]
             }
+
+def replaceWords(splitline):
+    ret = ""
+    for string in splitline:
+        for k, dk in genderID.items():
+            for x in dk:
+                if x in string:
+                    string = string.replace(x,k)
+        ret += string
+        ret += "\n"
+    return ret
+
+# print(replaceWords(recj))
+
+# replaceWords(recj)
+
+# def nameToInitials(name):
+#     name = name.split(" ");
+#     ret = ""
+#     for item in name:
+#         ret += item[0]
+#     return ret
+# print(nameToInitials("Laura Goon"))
 
 # ---------- END (IDENTIFY GENDER WORDS) ---------
 
