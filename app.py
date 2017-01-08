@@ -15,6 +15,10 @@ def results():
     return render_template("results.html", link=link)
 
 @app.route("/search/", methods = ['POST','GET'])
+def search():
+    initials = request.form['initials']
+    ID = request.form['id']
+    return render_template("search.html")
 
 if __name__ == "__main__": #Ensures that the app will only start if this file is not being imported from somewhere else but rather being accessed directly
     app.run()
